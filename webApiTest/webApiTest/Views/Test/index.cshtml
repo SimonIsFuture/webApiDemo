@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            var input = $("#input");
+            var btn = $("#btn");
+            var res = $("#res");
+            btn.click(
+                    function () {
+                        console.log('click');
+                        var url = input.val();
+                        $.getJSON(url, function (data) {
+                            console.log(data);
+                        });
+
+
+                    }
+            );
+        });
+    </script>
+</head>
+<body>
+    <p>Input the url:</p>
+    <input type="text" id="input" placeholder="input query url">
+    <button id="btn">Ok</button>
+    <p id="res">The response is</p>>
+
+
+
+</body>
+
+</html>
