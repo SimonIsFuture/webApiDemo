@@ -18,7 +18,7 @@ namespace webApiTest
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API 路由
-            config.MapHttpAttributeRoutes();
+        config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

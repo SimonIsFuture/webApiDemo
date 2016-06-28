@@ -13,9 +13,10 @@ namespace webApiTest.Controllers
         // GET: Goods
         
         Goods goods = new Goods();
-        public int getaddGoods(string itemNum, string itemName, string itemDescription)
+        public int getaddGoods(string itemNum, string itemName, string itemDescription,string hashCode)
         {
-            return goods.addGoods(itemNum, itemName, itemDescription);
+            if (!ConfirmUser.testUser(hashCode)) return -1;
+            else return goods.addGoods(itemNum, itemName, itemDescription);
         }
         public Goods getgoodsInfo(int id)
         {

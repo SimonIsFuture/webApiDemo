@@ -11,9 +11,10 @@ namespace webApiTest.Controllers
     public class WareHouseController : ApiController
     {
         WareHouse ware = new WareHouse();
-        public int getaddWareHouse(string wareHouseName, string wareHouseDescription)
+        public int getaddWareHouse(string wareHouseName, string wareHouseDescription,string hashCode)
         {
-            return ware.addWareHouse(wareHouseName,wareHouseDescription);
+            if (!ConfirmUser.testUser(hashCode)) return -1;
+            else return ware.addWareHouse(wareHouseName,wareHouseDescription);
         }
         public WareHouse getWareHouseInfo(int id)
         {

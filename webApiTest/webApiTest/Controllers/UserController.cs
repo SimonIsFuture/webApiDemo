@@ -25,7 +25,7 @@ namespace webApiTest.Controllers
             user.queryUserInfo(id);
             return user;
         }
-        public int getlogIn(string userName, string userPassword)
+        public String getlogIn(string userName, string userPassword)
         {
             return user.logIn(userName, userPassword);
         }

@@ -20,7 +20,7 @@ namespace webApiTest.Models
         {
             int id=0;
             MySqlConnection mysql = getMysql();
-            queryString = "insert into user (userName,password) values ('" + name + "','" + password + "')";
+            queryString = "insert into user (userName,password,userHashCode) values ('" + name + "','" + password + "','"+(name+password).GetHashCode()+"')";
             mysql.Open();//打开数据库
             MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
             mySqlCommand.ExecuteNonQuery();
@@ -55,11 +55,11 @@ namespace webApiTest.Models
             rdr.Close();//关闭读取的
             mysql.Close();//关闭链接
         }
-        public int logIn(string name,string password)
+        public String logIn(string name,string password)
         {
-            int id = 0;//not exist
+            String hashCode="wrong";//not exist
             MySqlConnection mysql = getMysql();
-            queryString = "SELECT id FROM user where userName='" +name+"' and  password='"+password+"'";
+            queryString = "SELECT userHashCode FROM user where userName='" +name+"' and  password='"+password+"'";
             Console.WriteLine(queryString);
             mysql.Open();//打开数据库
             MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
@@ -67,13 +67,13 @@ namespace webApiTest.Models
             if (rdr.HasRows)
             {
                 rdr.Read();
-                id = rdr.GetInt32(0);
+                hashCode = rdr.GetString(0);
 
             }
             rdr.Close();//关闭读取的
             mysql.Close();//关闭链接
 
-            return id;
+            return hashCode;
         }
         MySqlConnection getMysql()
         {
