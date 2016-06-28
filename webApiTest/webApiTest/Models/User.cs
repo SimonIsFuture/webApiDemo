@@ -9,7 +9,7 @@ namespace webApiTest.Models
 {
     public class User
     {
-        String mysqlStr = "server=115.28.134.202;User id=root;password=201323864;Database=stockmanage";
+        
         public string userName { get; set; }
         public string passWord { get; set; }
         int userId { get; set; }
@@ -39,7 +39,7 @@ namespace webApiTest.Models
         }
         public void queryUserInfo(int id)
         {  
-            MySqlConnection mysql = new MySqlConnection(mysqlStr); 
+            MySqlConnection mysql = getMysql(); 
             queryString = "SELECT * FROM user where id="+id;
             Console.WriteLine(queryString);
             mysql.Open();//打开数据库
@@ -57,7 +57,7 @@ namespace webApiTest.Models
         }
         MySqlConnection getMysql()
         {
-            String mysqlStr = "Database=stockmanage;Data Source=localhost;User Id=root;Password=;pooling=false;CharSet=utf8;port=3306";
+            String mysqlStr = MysqlConn.connString;
             MySqlConnection mysql = new MySqlConnection(mysqlStr);
             return mysql;
         }

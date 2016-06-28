@@ -49,7 +49,7 @@ namespace webApiTest.Models
             int stockChangeId = 0;
             int stockId = 0;
             MySqlConnection mysql = getMysql();
-            queryString = "SELECT FROM STOCK WHERE GOODSID="+goodsId+" AND WAREHOUSEID="+wareHouseId;
+            queryString = "SELECT * FROM STOCK WHERE GOODSID="+goodsId+" AND WAREHOUSEID="+wareHouseId;
             mysql.Open();//打开数据库
             MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
             MySqlDataReader rdr = mySqlCommand.ExecuteReader();

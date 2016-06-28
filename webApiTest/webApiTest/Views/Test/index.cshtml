@@ -16,6 +16,9 @@
                         var url = input.val();
                         $.getJSON(url, function (data) {
                             console.log(data);
+                            console.log(JSON.stringify(data));
+                            
+                            
                         });
 
 
@@ -28,7 +31,7 @@
     <p>Input the url:</p>
     <input type="text" id="input" placeholder="input query url">
     <button id="btn">Ok</button>
-    <p id="res">The response is</p>>
+    <p id="res">The response displays in the console</p>>
 
 
 
