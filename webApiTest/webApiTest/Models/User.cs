@@ -55,6 +55,26 @@ namespace webApiTest.Models
             rdr.Close();//关闭读取的
             mysql.Close();//关闭链接
         }
+        public int logIn(string name,string password)
+        {
+            int id = 0;//not exist
+            MySqlConnection mysql = getMysql();
+            queryString = "SELECT id FROM user where userName='" +name+"' and  password='"+password+"'";
+            Console.WriteLine(queryString);
+            mysql.Open();//打开数据库
+            MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
+            MySqlDataReader rdr = mySqlCommand.ExecuteReader();
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                id = rdr.GetInt32(0);
+
+            }
+            rdr.Close();//关闭读取的
+            mysql.Close();//关闭链接
+
+            return id;
+        }
         MySqlConnection getMysql()
         {
             String mysqlStr = MysqlConn.connString;
