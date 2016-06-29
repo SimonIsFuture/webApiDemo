@@ -132,8 +132,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>id</th>
+                                                    <th>商品编号</th>
                                                     <th>商品名称</th>
+                                                    <th>商品描述</th>
                                                     <th>仓库名称</th>
+                                                    <th>仓库描述</th>
                                                     <th>变动数量</th>
                                                     <th>当前数量</th>
                                                     <th>进出货时间</th>
@@ -213,7 +216,7 @@
                     for(var i=0;i<data.length;i++){
                         var tmp = data[i];
                         var tr = document.createElement("tr");            
-                        tr.innerHTML = "<td>3</td><td>特斯拉Model 3</td><td>广州仓</td><td>"+tmp['stockChanegNum']+"</td><td>"+tmp['stockNumber']+"</td><td>"+tmp['stockChangeTime']+"</td>";
+                        tr.innerHTML = "<td>"+tmp['stockChangeId']+"</td><td>"+tmp['goodsNumber']+"</td><td>"+tmp['goodsName']+"</td><td>"+tmp['goodsDescription']+"</td><td>"+tmp['wareHouseName']+"</td><td>"+tmp['wareHouseDescription']+"</td><td>"+tmp['stockChangeNum']+"</td><td>"+tmp['stockNumber']+"</td><td>"+tmp['stockChangeTime']+"</td>";
                         toappend.appendChild(tr);
                  
                         

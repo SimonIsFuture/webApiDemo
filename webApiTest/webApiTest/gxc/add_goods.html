@@ -126,28 +126,28 @@
                                         
                                     </div>
                                     <div class="ibox-content">
-                                        <form method="get" class="form-horizontal">
+                                        <form id="add_goods" method="get" class="form-horizontal">
                                             <div class="form-group"><label class="col-sm-2 control-label">商品编号</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control" name="itemNum"></div>
                                             </div>
 
                                             <div class="hr-line-dashed"></div>
 
                                             <div class="form-group"><label class="col-sm-2 control-label">商品名称</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control" name="itemName"></div>
                                             </div>
                                             
                                             <div class="hr-line-dashed"></div>
 
                                             <div class="form-group"><label class="col-sm-2 control-label">商品描述</label>
-                                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input type="text" class="form-control" name="itemDescription"></div>
                                             </div> 
 
                                             <div class="hr-line-dashed"></div>
                                             <div class="form-group">
                                                 <div class="col-sm-4 col-sm-offset-2">
 
-                                                    <button class="btn btn-primary" type="submit">提交</button>
+                                                    <button class="btn btn-primary" onclick="submit_info()">提交</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -202,7 +202,25 @@
     <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script src="js/plugins/dataTables/dataTables.responsive.js"></script>
     <script src="js/plugins/dataTables/dataTables.tableTools.min.js"></script>
-    <script>$(document).ready(function() {
+
+    <script>
+    
+    function submit_info(){
+        $.ajax({
+            cache: true,
+            type: "GET",
+            url:"/api/goods/addGoods",
+            data:$('#add_goods').serialize(),// 你的formid
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+    $(document).ready(function() {
              
 
                 var data1 = [[0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]];
