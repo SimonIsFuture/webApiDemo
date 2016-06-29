@@ -58,6 +58,34 @@ namespace webApiTest.Models
             MySqlConnection mysql = new MySqlConnection(mysqlStr);
             return mysql;
         }
+        public List<Dictionary<String, object>> showWareHouse()
+        {
+            String queryString;
+            List<Dictionary<String, object>> list = new List<Dictionary<String, object>>(4);//用于存储字典的列表
+                                                                                            // Dictionary<String, object> pList = new Dictionary<String, object>();//用于保存结果
+
+            MySqlConnection mysql = getMysql();
+            queryString = "SELECT * FROM warehouse";
+            mysql.Open();//打开数据库
+            MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
+            MySqlDataReader rdr = mySqlCommand.ExecuteReader();
+            while (rdr.Read())
+            {
+                if (rdr.HasRows)
+                {
+                    Dictionary<String, object> pList = new Dictionary<String, object>();//用于保存结果
+                    pList.Add("wareHouseId", rdr.GetInt32(0));
+
+                    pList.Add("wareHouseName", rdr.GetString(1));
+                    pList.Add("wareHouseDescription", rdr.GetString(2));
+                    list.Add(pList);
+                }
+            }
+
+            rdr.Close();//关闭读取的
+            mysql.Close();//关闭链接
+            return list;
+        }
 
     }
 }

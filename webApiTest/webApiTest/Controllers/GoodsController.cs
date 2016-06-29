@@ -11,9 +11,9 @@ namespace webApiTest.Controllers
     public class GoodsController : ApiController
     {
         // GET: Goods
-        
+
         Goods goods = new Goods();
-        public int getaddGoods(string itemNum, string itemName, string itemDescription,string hashCode)
+        public int getaddGoods(string itemNum, string itemName, string itemDescription, string hashCode)
         {
             if (!ConfirmUser.testUser(hashCode)) return -1;
             else return goods.addGoods(itemNum, itemName, itemDescription);
@@ -22,6 +22,10 @@ namespace webApiTest.Controllers
         {
             goods.queryGoods(id);
             return goods;
+        }
+        public List<Dictionary<String, object>> getshowGoods()
+        {
+            return goods.showGoods();
         }
     }
 }

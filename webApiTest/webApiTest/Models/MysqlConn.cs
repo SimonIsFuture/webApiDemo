@@ -9,7 +9,7 @@ namespace webApiTest.Models
 {
     public class MysqlConn
     {
-        public static string connString = "Database=stockmanage;Data Source=localhost;User Id=root;Password=;pooling=false;CharSet=utf8;port=3306";
+        public static string connString = "Database=stockmanage;Data Source=localhost;User Id=root;Password=201323864;pooling=false;CharSet=utf8;port=3306";
         public MySqlConnection getMysql()
         {
             String mysqlStr = "Database=test;Data Source=localhost;User Id=root;Password=;pooling=false;CharSet=utf8;port=3306";

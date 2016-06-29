@@ -89,7 +89,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="login.html">
+                                <a href="login.html" onclick="document.cookie='hashCode=0';">
                                     <i class="fa fa-sign-out"></i>退出</a>
                             </li>
                         </ul>
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="widget-text-box">
                                                         <h4 class="media-heading">冯曦蒙</h4>
-                                                        <p>贡献描述</p>
+                                                        <p>负责.net后台编码</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -158,7 +158,7 @@
                                                     </div>
                                                     <div class="widget-text-box">
                                                         <h4 class="media-heading">葛星辰</h4>
-                                                        <p>贡献描述</p>
+                                                        <p>负责web前端界面编码</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -172,7 +172,7 @@
                                                     </div>
                                                     <div class="widget-text-box">
                                                         <h4 class="media-heading">黄绿蓝</h4>
-                                                        <p>贡献描述</p>
+                                                        <p>负责前后端的对接</p>
                                                     </div>
                                                 </div>
                                                 
@@ -235,8 +235,7 @@
                 return null;
             }
         $(document).ready(function() {
-                
-                document.cookie="username=456";
+            
                 console.log(getCookie("username"));
                 setTimeout(function() {
                     toastr.options = {

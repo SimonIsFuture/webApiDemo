@@ -11,7 +11,7 @@ namespace webApiTest.Models
         public static bool testUser(String hashCode)
         {
             MySqlConnection mysql = getMysql();
-            String queryString = "SELECT * FROM USER WHERE USERHASHCODE=" + hashCode;
+            String queryString = "SELECT * FROM USER WHERE `userHashCode`='" + hashCode +"'";
             mysql.Open();//打开数据库
             MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
             MySqlDataReader rdr = mySqlCommand.ExecuteReader();

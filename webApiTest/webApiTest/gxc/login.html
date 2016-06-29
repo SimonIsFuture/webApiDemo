@@ -28,7 +28,7 @@
             <h3>库存管理系统</h3>
             
             <p>Login in.</p>
-            <form id="login_form" class="m-t" role="form" >
+            <form id="login_form" action="" class="m-t">
                 <div class="form-group">
                     <input type="email" name="userName" class="form-control" placeholder="Username" required="">
                 </div>
@@ -47,19 +47,29 @@
 
 
     <script>
-        function login(){
-            document.cookie="hashCode=a66abb5684c45962d887564f08346e8d";
+
+        function login(){            
+            // document.cookie="hashCode=a66abb5684c45962d887564f08346e8d";
+        
             $.ajax({
                 cache: true,
                 type: "GET",
                 url:"/api/user/login",
                 data:$('#login_form').serialize(),// 你的formid
+                
                 async: false,
                 error: function(request) {
                     alert("Connection error");
                 },
                 success: function(data) {
                     console.log(data);
+                    if(data=="wrong"){
+                        alert("用户名或密码错误");
+                  
+                    }else{
+                        document.cookie="hashCode="+data;
+                        window.open("index.html");
+                    }
                 }
             });
         }

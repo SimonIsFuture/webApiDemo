@@ -205,26 +205,29 @@
 
     <script>
     function getCookie(name)
-            {
-                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-                if(arr=document.cookie.match(reg))
-                return unescape(arr[2]);
-                else
-                return null;
-            }
-            
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+    }
+
     function submit_info(){
+        var hashCode = getCookie("hashCode");
+        console.log($('#add_goods').serialize()+"&hashCode="+hashCode);
         $.ajax({
             cache: true,
             type: "GET",
             url:"/api/goods/addGoods",
-            data:$('#add_goods').serialize(),// 你的formid
+            data:($('#add_goods').serialize()+"&hashCode="+hashCode),// 你的formid
             async: false,
             error: function(request) {
                 alert("Connection error");
             },
             success: function(data) {
-                console.log(data);
+                alert("插入成功，id为"+data);
+       
             }
         });
     }
