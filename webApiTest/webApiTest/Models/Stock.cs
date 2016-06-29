@@ -18,7 +18,7 @@ namespace webApiTest.Models
            // Dictionary<String, object> pList = new Dictionary<String, object>();//用于保存结果
 
             MySqlConnection mysql = getMysql();
-            queryString = "select stock_change.id,stock.id,stock.number,stock_change.number,stock.goodsId,stock.warehouseId,stock_change.time,goods.`name`,warehouse.`name` " +
+            queryString = "select stock_change.id,stock.id,stock.number,stock_change.number,stock.goodsId,stock.warehouseId,stock_change.time,goods.`name`,warehouse.`name`,goods.item_number,goods.description,warehouse.description " +
             "from stock_change LEFT JOIN stock on stock_change.stock_id = stock.id LEFT JOIN warehouse on stock.warehouseId = warehouse.id LEFT JOIN goods on stock.goodsId = goods.id";
             mysql.Open();//打开数据库
             MySqlCommand mySqlCommand = new MySqlCommand(queryString, mysql);
@@ -38,6 +38,9 @@ namespace webApiTest.Models
                     pList.Add("stockChangeTime", rdr.GetString(6));
                     pList.Add("goodsName", rdr.GetString(7));
                     pList.Add("wareHouseName", rdr.GetString(8));
+                    pList.Add("goodsNumber",rdr.GetString(9));
+                    pList.Add("goodsDescription",rdr.GetString(10));
+                    pList.Add("wareHouseDescription",rdr.GetString(11));
                     list.Add(pList);
                 }
             }
