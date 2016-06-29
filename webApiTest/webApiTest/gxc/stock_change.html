@@ -139,33 +139,8 @@
                                                     <th>进出货时间</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>特斯拉Model 3</td>
-                                                    <td>广州仓</td>
-                                                    <td>-3</td>
-                                                    <td>6</td>
-                                                    <td>2016-06-28  20:48:56</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>特斯拉Model 3</td>
-                                                    <td>广州仓</td>
-                                                    <td>4</td>
-                                                    <td>9</td>
-                                                    <td>2016-06-24  20:48:56</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>特斯拉Model 3</td>
-                                                    <td>广州仓</td>
-                                                    <td>5</td>
-                                                    <td>5</td>
-                                                    <td>2016-06-18  20:48:56</td>
-                                                </tr>
+                                            <tbody id="toappend">
+                                         
 
                                             </tbody>
 
@@ -229,17 +204,34 @@
     <script>$(document).ready(function() {
 
 
-                $('.dataTables-example').dataTable({
-                    responsive: true,
-                    "dom": 'T<"clear">lfrtip',
-                    "tableTools": {
-                        "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                
+
+               var jqxhr = $.ajax('/api/stock/stockChangeInfo', {
+                    dataType: 'json'
+                }).done(function (data) {
+                    var toappend=document.getElementById("toappend");
+                    for(var i=0;i<data.length;i++){
+                        var tmp = data[i];
+                        var tr = document.createElement("tr");            
+                        tr.innerHTML = "<td>3</td><td>特斯拉Model 3</td><td>广州仓</td><td>"+tmp['stockChanegNum']+"</td><td>"+tmp['stockNumber']+"</td><td>"+tmp['stockChangeTime']+"</td>";
+                        toappend.appendChild(tr);
+                 
+                        
                     }
+                    console.log(data);
+                    $('.dataTables-example').dataTable({
+                        responsive: true,
+                        "dom": 'T<"clear">lfrtip',
+                        "tableTools": {
+                            "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                        }
+                    });
+
+                    $('.DTTT_container').remove();
                 });
 
-                $('.DTTT_container').remove();
 
-               
+                
 
             });</script>
 
