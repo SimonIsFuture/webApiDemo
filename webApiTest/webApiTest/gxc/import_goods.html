@@ -210,7 +210,17 @@
     <script src="js/plugins/chartJs/Chart.min.js"></script>
     <!-- Toastr -->
     <script src="js/plugins/toastr/toastr.min.js"></script>
-    <script>$(document).ready(function() {
+    <script>
+    function getCookie(name)
+            {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+                else
+                return null;
+            }
+    $(document).ready(function() {
+                
   
 
                 var data1 = [[0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]];

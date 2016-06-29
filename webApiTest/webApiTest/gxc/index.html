@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     
     <head>
@@ -225,7 +225,19 @@
         <script src="js/plugins/chartJs/Chart.min.js"></script>
         <!-- Toastr -->
         <script src="js/plugins/toastr/toastr.min.js"></script>
-        <script>$(document).ready(function() {
+        <script>
+            function getCookie(name)
+            {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+                else
+                return null;
+            }
+        $(document).ready(function() {
+                
+                document.cookie="username=456";
+                console.log(getCookie("username"));
                 setTimeout(function() {
                     toastr.options = {
                         closeButton: true,
